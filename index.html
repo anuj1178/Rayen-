@@ -2,76 +2,213 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ray Enterprises | Defence Electrical Equipment</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rayen - Electrical Equipment</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Roboto', sans-serif; line-height: 1.6; background: #f4f4f4; color: #333; }
-    header { background: #0a1a2f; color: white; padding: 20px; text-align: center; }
-    nav { background: #142b47; padding: 10px 20px; text-align: center; }
-    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    .hero { background: url('https://www.rayen.in/images/banner.jpg') center/cover no-repeat; height: 300px; display: flex; align-items: center; justify-content: center; color: white; text-shadow: 2px 2px 4px black; font-size: 2rem; font-weight: bold; }
-    .section { padding: 40px 20px; background: white; margin-bottom: 20px; }
-    .section h2 { color: #0a1a2f; margin-bottom: 20px; }
-    .section ul { padding-left: 20px; }
-    footer { background: #0a1a2f; color: white; text-align: center; padding: 15px; }
+    /* Reset and base styles */
+    body, html {
+      margin: 0; padding: 0; height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Slideshow background container */
+    .slideshow-background {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .slideshow-background img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      animation: fadeSlideshow 24s infinite;
+    }
+
+    .slideshow-background img:nth-child(1) { animation-delay: 0s; }
+    .slideshow-background img:nth-child(2) { animation-delay: 8s; }
+    .slideshow-background img:nth-child(3) { animation-delay: 16s; }
+
+    @keyframes fadeSlideshow {
+      0% {opacity: 0;}
+      8% {opacity: 1;}
+      33% {opacity: 1;}
+      41% {opacity: 0;}
+      100% {opacity: 0;}
+    }
+
+    /* Content overlay to improve readability */
+    .content-overlay {
+      position: relative;
+      z-index: 10;
+      background: rgba(0,0,0,0.6);
+      min-height: 100vh;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    /* Main content */
+    main {
+      margin-top: 80px;
+      max-width: 900px;
+      width: 90%;
+    }
+
+    main h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      letter-spacing: 1.5px;
+    }
+
+    main p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    /* Products section as cards */
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      width: 250px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: background 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 15px rgba(255, 215, 0, 0.7);
+    }
+
+    .product-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    /* Responsive */
+    @media(max-width: 600px) {
+      .products {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .product-card {
+        width: 90%;
+      }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Ray Enterprises</h1>
-    <p>ISO 9001:2015 Certified | National Award Winner for Innovation</p>
-  </header>
-  <nav>
-    <a href="#about">About Us</a>
-    <a href="#products">Products</a>
-    <a href="#clients">Clients</a>
-    <a href="#contact">Contact</a>
-  </nav>
 
-  <div class="hero">
-    Empowering India's Defence with Electrical Solutions
+  <div class="slideshow-background">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80" alt="Indian Navy Ship" />
+    <img src="https://cdn.pixabay.com/photo/2016/01/28/00/48/tank-1165202_1280.jpg" alt="Indian Army Tank" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Indian_Navy_Corvette_INS_Kiltan_%28P30%29.jpg" alt="Indian Navy Ship" />
   </div>
 
-  <section class="section" id="about">
-    <h2>About Us</h2>
-    <p>Ray Enterprises has been a pioneer in the indigenization of Defence electrical equipment for over 40 years. We specialize in Lighting Fixtures, Search Lights, Navigational Equipment, and Emergency Power Systems for the Indian Navy and Army.</p>
-  </section>
+  <header>
+    <h1>Rayen</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-  <section class="section" id="products">
-    <h2>Product Categories</h2>
-    <ul>
-      <li>External Lighting (Search Lights, Flood Lights)</li>
-      <li>Emergency & Flameproof Lighting</li>
-      <li>Primary Lighting (Bulkhead, Pendant Lights)</li>
-      <li>Switches, Sockets & Junction Boxes</li>
-      <li>Emergency Power Systems (ESCBs, Reels)</li>
-      <li>Submarine & Naval-Class Tested Lights</li>
-    </ul>
-  </section>
+  <div class="content-overlay">
+    <main>
+      <section id="home">
+        <h2>Welcome to Rayen</h2>
+        <p>Leading manufacturer of electrical equipment for Indian Navy and Indian Army.</p>
+      </section>
 
-  <section class="section" id="clients">
-    <h2>Clients & Partners</h2>
-    <ul>
-      <li>Indian Navy & Indian Army</li>
-      <li>Mazagon Dock Ltd, Cochin Shipyard</li>
-      <li>Larsen & Toubro Defence, Tata Advanced Systems</li>
-      <li>Garden Reach Shipbuilders, Hindustan Shipyard</li>
-    </ul>
-  </section>
+      <section id="products">
+        <h2>Our Products</h2>
+        <div class="products">
+          <div class="product-card">
+            <h3>Product 1</h3>
+            <p>High quality electrical component for naval use.</p>
+          </div>
+          <div class="product-card">
+            <h3>Product 2</h3>
+            <p>Durable and efficient equipment designed for army tanks.</p>
+          </div>
+          <div class="product-card">
+            <h3>Product 3</h3>
+            <p>Advanced technology equipment customized to military standards.</p>
+          </div>
+        </div>
+      </section>
 
-  <section class="section" id="contact">
-    <h2>Contact Us</h2>
-    <p><strong>Ray Enterprises</strong><br>
-      18, Industrial Estate, Ambala Cantt - 133001, Haryana - INDIA<br>
-      Email: <a href="mailto:info@rayen.in">info@rayen.in</a><br>
-      Website: <a href="http://www.rayen.in">www.rayen.in</a>
-    </p>
-  </section>
+      <section id="contact" style="margin-top: 50px;">
+        <h2>Contact Us</h2>
+        <p>Email: info@rayen.com</p>
+        <p>Phone: +91 12345 67890</p>
+      </section>
+    </main>
 
-  <footer>
-    &copy; 2025 Ray Enterprises. All Rights Reserved.
-  </footer>
+    <footer>
+      &copy; 2025 Rayen Electrical Equipment. All rights reserved.
+    </footer>
+  </div>
+
 </body>
 </html>
